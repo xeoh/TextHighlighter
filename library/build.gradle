@@ -1,0 +1,54 @@
+apply plugin: 'com.android.library'
+apply plugin: 'checkstyle'
+apply plugin: 'com.novoda.bintray-release'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+
+    defaultConfig {
+        minSdkVersion 9
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+    }
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.novoda:bintray-release:0.3.4'
+    }
+}
+
+publish {
+    userOrg = 'xeoh'
+    repoName = 'android'
+    groupId = 'com.xeoh.android'
+    artifactId = 'text-highlighter'
+    publishVersion = '1.0.1'
+    desc = 'android texthighlighter'
+    website = 'https://github.com/xeoh/TextHighlighter'
+}
+
+checkstyle {
+    configFile = file("${project.rootDir}/config/checkstyle/google_style.xml")
+    toolVersion = "6.7"
+}
+
+task checkstyle(type: Checkstyle) {
+    source 'src'
+    include '**/*.java'
+    exclude '**/gen/**'
+    exclude '**/R.java'
+    exclude '**/BuildConfig.java'
+
+    // empty classpath
+    classpath = files()
+}
+
+tasks.checkstyle.dependsOn('clean')
+
+preBuild.dependsOn('checkstyle')

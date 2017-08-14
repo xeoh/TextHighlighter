@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.xeoh.sample.texthighlighter.MainActivity">
+
+    <TextView
+        android:id="@+id/explain_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:text="Example App of TextHighlighter"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingStart="20dp"
+        android:paddingRight="20dp"
+        android:paddingEnd="20dp">
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="Search:"/>
+        <EditText
+            android:id="@+id/search_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingStart="20dp"
+        android:paddingRight="20dp"
+        android:paddingEnd="20dp">
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="Foreground Color:"/>
+        <EditText
+            android:id="@+id/fg_color_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="FF0000"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingStart="20dp"
+        android:paddingRight="20dp"
+        android:paddingEnd="20dp">
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="Background Color:"/>
+        <EditText
+            android:id="@+id/bg_color_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="FFFF00"/>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingStart="10dp"
+        android:paddingRight="10dp"
+        android:paddingEnd="10dp"
+        android:dividerHeight="1dp">
+    </ListView>
+
+</LinearLayout>
