@@ -19,8 +19,12 @@ highlights every View which inherits TextView(i.e. TextView, Button, EditText). 
 Android API ≥ 2.3 (API Level 9)
 
 ## Gradle
+You can import TextHighlighter from **jcenter**.
 ```gradle
-// not available for now
+repositories {
+    jcenter()
+}
+
 dependencies {
     compile 'com.xeoh.android:text-highlighter:1.0.1'
 }
