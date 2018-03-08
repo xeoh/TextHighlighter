@@ -10,6 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -48,6 +51,12 @@ public class MainActivity extends AppCompatActivity {
 
     EditText bgColorText = (EditText) findViewById(R.id.bg_color_text);
     bgColorText.addTextChangedListener(bgColorTextWatcher);
+
+    CheckBox boldText = (CheckBox) findViewById(R.id.bold_text);
+    boldText.setOnCheckedChangeListener(boldChangedListener);
+
+    CheckBox italicText = (CheckBox) findViewById(R.id.italic_text);
+    italicText.setOnCheckedChangeListener(italicChangedListener);
   }
 
   private TextWatcher searchTextWatcher = new TextWatcher() {
@@ -125,6 +134,22 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void afterTextChanged(Editable s) { }
+  };
+
+  private OnCheckedChangeListener boldChangedListener = new OnCheckedChangeListener() {
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+      textHighlighter.setBold(isChecked);
+      textHighlighter.invalidate(matcher);
+    }
+  };
+
+  private OnCheckedChangeListener italicChangedListener = new OnCheckedChangeListener() {
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+      textHighlighter.setItalic(isChecked);
+      textHighlighter.invalidate(matcher);
+    }
   };
 
   private class QuoteListAdapter extends BaseAdapter {

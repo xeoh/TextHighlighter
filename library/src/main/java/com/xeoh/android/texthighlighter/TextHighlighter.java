@@ -1,10 +1,12 @@
 package com.xeoh.android.texthighlighter;
 
+import android.graphics.Typeface;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.BackgroundColorSpan;
 import android.text.style.CharacterStyle;
 import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
 import android.view.View;
 import android.widget.TextView;
 
@@ -14,6 +16,8 @@ import java.util.ArrayList;
 public class TextHighlighter {
   private ForegroundColorSpan fgColor;
   private BackgroundColorSpan bgColor;
+  private boolean bold = false;
+  private boolean italic = false;
   private ArrayList<TextView> textViews = new ArrayList<>();
   private String highlightedText = null;
 
@@ -134,6 +138,28 @@ public class TextHighlighter {
   }
 
   /**
+   * Set bold typeface to highlighted text.
+   *
+   * @param bold bold or not
+   * @return itself
+   */
+  public TextHighlighter setBold(boolean bold) {
+    this.bold = bold;
+    return this;
+  }
+
+  /**
+   * Set italic typeface to highlighted text.
+   *
+   * @param italic bold or not
+   * @return itself
+   */
+  public TextHighlighter setItalic(boolean italic) {
+    this.italic = italic;
+    return this;
+  }
+
+  /**
    * Add single TextView as target of current TextHighlighter.
    *
    * <p> It sets target view only if view is instance of TextView.
@@ -192,13 +218,18 @@ public class TextHighlighter {
                                        ArrayList<Integer> indices) {
     Spannable spannable = new SpannableString(origin.toString());
 
-    if (origin.toString().isEmpty() || (fgColor == null && bgColor == null)) {
+    boolean noop = origin.toString().isEmpty()
+        || (fgColor == null && bgColor == null && !bold && !italic);
+
+    if (noop) {
       return spannable;
     }
 
     for (int index = 0; index < origin.toString().length(); index++) {
       for (CharacterStyle style : origin.getSpans(index, index + 1, CharacterStyle.class)) {
-        spannable.setSpan(CharacterStyle.wrap(style), index, index + 1, 0);
+        if (!(style instanceof StyleSpan)) {
+          spannable.setSpan(CharacterStyle.wrap(style), index, index + 1, 0);
+        }
       }
     }
 
@@ -209,6 +240,16 @@ public class TextHighlighter {
 
       if (bgColor != null) {
         spannable.setSpan(CharacterStyle.wrap(bgColor), index, index + keyword.length(), 0);
+      }
+
+      if (!bold && !italic) {
+        spannable.setSpan(new StyleSpan(Typeface.NORMAL), index, index + keyword.length(), 0);
+      } else if (bold && !italic) {
+        spannable.setSpan(new StyleSpan(Typeface.BOLD), index, index + keyword.length(), 0);
+      } else if (!bold && italic) {
+        spannable.setSpan(new StyleSpan(Typeface.ITALIC), index, index + keyword.length(), 0);
+      } else {
+        spannable.setSpan(new StyleSpan(Typeface.BOLD_ITALIC), index, index + keyword.length(), 0);
       }
     }
 
