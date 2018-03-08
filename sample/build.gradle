@@ -15,5 +15,5 @@ android {
 
 dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.xeoh.android:text-highlighter:1.0.1'
+    compile 'com.xeoh.android:text-highlighter:1.0.2'
 }
