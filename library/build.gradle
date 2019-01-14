@@ -28,7 +28,7 @@ publish {
     repoName = 'android'
     groupId = 'com.xeoh.android'
     artifactId = 'text-highlighter'
-    publishVersion = '1.0.2'
+    publishVersion = '1.0.3'
     desc = 'android texthighlighter'
     website = 'https://github.com/xeoh/TextHighlighter'
 }

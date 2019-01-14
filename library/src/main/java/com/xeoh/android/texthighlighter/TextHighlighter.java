@@ -263,13 +263,8 @@ public class TextHighlighter {
 
     ArrayList<Integer> indices = matcher.getMatchIndices(textView.getText().toString(), keyword);
 
-    if (textView.getText() instanceof Spannable) {
-      textView.setText(getHighlightedText((Spannable) textView.getText(), keyword, indices),
-          TextView.BufferType.SPANNABLE);
-    } else {
-      textView.setText(getHighlightedText(textView.getText().toString(), keyword, indices),
-          TextView.BufferType.SPANNABLE);
-    }
+    textView.setText(getHighlightedText(textView.getText().toString(), keyword, indices),
+        TextView.BufferType.SPANNABLE);
   }
 
   private void resetTextView(TextView textView) {

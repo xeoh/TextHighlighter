@@ -1,5 +1,5 @@
 # **Android TextHighlighter**
-[![version 1.0.2](https://img.shields.io/badge/version-1.0.2-green.svg)]()
+[![version 1.0.3](https://img.shields.io/badge/version-1.0.3-green.svg)]()
 [![API Level ≥9](https://img.shields.io/badge/platform-android-lightgrey.svg)](https://developer.android.com/index.html)
 [![API ≥2.3](https://img.shields.io/badge/android-API%20Level%20%E2%89%A59-blue.svg)](https://developer.android.com/about/versions/android-2.3.html)
 [![API ≥9](https://img.shields.io/badge/android-API%20%E2%89%A52.3-blue.svg)](https://developer.android.com/about/versions/android-2.3.html)
@@ -26,7 +26,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.xeoh.android:text-highlighter:1.0.2'
+    compile 'com.xeoh.android:text-highlighter:1.0.3'
 }
 ```
 
@@ -66,6 +66,7 @@ See [sample application](https://github.com/xeoh/TextHighlighter/tree/master/sam
 - **1.0.0** Testing version. (Not published)
 - **1.0.1** First Deploy.
 - **1.0.2** Add bold and italic feature.
+- **1.0.3** Fix Performance issue for large amount of list items.
 
 ## License
 TextHighlighter is available under the MIT license. See the LICENSE file for more info.

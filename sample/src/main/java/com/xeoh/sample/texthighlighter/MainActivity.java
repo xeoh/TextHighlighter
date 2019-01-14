@@ -184,16 +184,16 @@ public class MainActivity extends AppCompatActivity {
         LayoutInflater inflater =
             (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView = inflater.inflate(R.layout.list_view_item, parent, false);
+        TextView nameTextView = (TextView) convertView.findViewById(R.id.name);
+        TextView quoteTextView = (TextView) convertView.findViewById(R.id.quote);
+        textHighlighter.addTarget(nameTextView);
+        textHighlighter.addTarget(quoteTextView);
       }
 
       TextView nameTextView = (TextView) convertView.findViewById(R.id.name);
-      nameTextView.setText(quotes.get(position).getKey());
-
       TextView quoteTextView = (TextView) convertView.findViewById(R.id.quote);
+      nameTextView.setText(quotes.get(position).getKey());
       quoteTextView.setText(quotes.get(position).getValue());
-
-      textHighlighter.addTarget(nameTextView);
-      textHighlighter.addTarget(quoteTextView);
       textHighlighter.invalidate(matcher);
 
       return convertView;
@@ -204,19 +204,27 @@ public class MainActivity extends AppCompatActivity {
   static
   {
     QUOTES = new HashMap<>();
-    QUOTES.put("Edsger Dijkstra",
-        "If debugging is the process of removing software bugs, then programming must be the " +
-            "process of putting them in.");
-    QUOTES.put("Linus Torvalds", "Most good programmers do programming not because they expect " +
-        "to get paid or get adulation by the public, but because it is fun to program.");
-    QUOTES.put("Chris Heilmann", "Java is to JavaScript what Car is to Carpet.");
-    QUOTES.put("Edward V Berard", "Walking on water and developing software from a " +
-        "specification are easy if both are frozen.");
-    QUOTES.put("Brian Kernighan", "Debugging is twice as hard as writing the code in the " +
-        "first place. Therefore, if you write the code as cleverly as possible, you are, " +
-        "by definition, not smart enough to debug it.");
-    QUOTES.put("Rick Osborne", "Always code as if the guy who ends up maintaining your code " +
-        "will be a violent psychopath who knows where you live.");
-    QUOTES.put("Nathan Myhrvold", "Software sucks because users demand it to.");
+    for (int i = 0; i < 100; i++) {
+      QUOTES.put("Edsger Dijkstra" + Integer.toString(i),
+              "If debugging is the process of removing software bugs, then programming must be the " +
+                      "process of putting them in.");
+      QUOTES.put("Linus Torvalds" + Integer.toString(i),
+              "Most good programmers do programming not because they expect " +
+              "to get paid or get adulation by the public, but because it is fun to program.");
+      QUOTES.put("Chris Heilmann" + Integer.toString(i),
+              "Java is to JavaScript what Car is to Carpet.");
+      QUOTES.put("Edward V Berard" + Integer.toString(i),
+              "Walking on water and developing software from a " +
+              "specification are easy if both are frozen.");
+      QUOTES.put("Brian Kernighan" + Integer.toString(i),
+              "Debugging is twice as hard as writing the code in the " +
+              "first place. Therefore, if you write the code as cleverly as possible, you are, " +
+              "by definition, not smart enough to debug it.");
+      QUOTES.put("Rick Osborne" + Integer.toString(i),
+              "Always code as if the guy who ends up maintaining your code " +
+              "will be a violent psychopath who knows where you live.");
+      QUOTES.put("Nathan Myhrvold" + Integer.toString(i),
+              "Software sucks because users demand it to.");
+    }
   }
 }
